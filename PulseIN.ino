@@ -41,20 +41,21 @@ void setup() {
 void comparison(){
   // Cheching MOTORB is quicker than MOTORA
     if((widthA > widthB) && (widthA < 255)){
-      MOTORA++;
+      MOTORA == MOTORA++;
     }
     else if((widthA > widthB) && (widthA = 255 )){
-      MOTORB--;
+      MOTORB == MOTORB--;
     }      
   
   // Cheching MOTORA is quicker than MOTORB
     else if((widthA < widthB) && (widthB < 255)){
-      MOTORB++;
+      MOTORB == MOTORB++;
     }
     else if((widthA < widthB) && (widthB = 255 )){
-      MOTORA--;
+      MOTORA == MOTORA--;
     }
   else{
+    
    //do nothing
   }
   
@@ -68,5 +69,7 @@ void loop() {
     widthB = pulseIn(tachB, HIGH);
     Serial.print("This is widthB: ");
     Serial.println(widthB);
+    forward();
     comparison();
+    
 }
