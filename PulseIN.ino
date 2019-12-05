@@ -38,6 +38,11 @@ void setup() {
 
 }
 
+void comparison(){
+  
+  
+}
+
 void loop() {
   // put your main code here, to run repeatedly:
     widthA = pulseIn(tachA, HIGH);
@@ -46,4 +51,5 @@ void loop() {
     widthB = pulseIn(tachB, HIGH);
     Serial.print("This is widthB: ");
     Serial.println(widthB);
+    comparison();
 }
