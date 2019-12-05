@@ -39,11 +39,20 @@ void setup() {
 }
 
 void comparison(){
-    if(widthA > widthB){
-    
+  // Cheching MOTORB is quicker than MOTORA
+    if((widthA > widthB) && (widthA < 255)){
+    MOTORA++
     }
-    else if(widthA < widthB){
-    
+    else if((widthA > widthB) && (widthA = 255 )){
+    MOTORB--
+    }      
+  
+  // Cheching MOTORA is quicker than MOTORB
+  if((widthA < widthB) && (widthB < 255)){
+    MOTORB++
+    }
+    else if((widthA < widthB) && (widthB = 255 )){
+    MOTORA--
     }
   
 }
