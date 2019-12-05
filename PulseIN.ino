@@ -39,7 +39,12 @@ void setup() {
 }
 
 void comparison(){
-  
+    if(widthA > widthB){
+    
+    }
+    else if(widthA < widthB){
+    
+    }
   
 }
 
