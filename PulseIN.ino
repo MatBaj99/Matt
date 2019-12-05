@@ -12,6 +12,20 @@
   unsigned long widthB; */
   int widthA;
   int widthB;
+  int MA1;
+  int MB1;
+  int MA2;
+  int MB2;  
+  int MA3;
+  int MB3;
+  int MA4;
+  int MB4;
+  int MA5;
+  int MB5;  
+  int MA6;
+  int MB6;
+  int AVwidthA;
+  int AVwidthB;
   
 void setup() {
   // put your setup code here, to run once:
@@ -25,9 +39,10 @@ void setup() {
     pinMode(tachA,INPUT);
     pinMode(tachB,INPUT);   
 }
+
  void forward(){
-    analogWrite(ENA, MOTORA);
-    analogWrite(ENB, MOTORB);
+    analogWrite(ENA, MOTORB);
+    analogWrite(ENB, MOTORA);
     /*digitalWrite(ENA, HIGH);
     digitalWrite(ENB,HIGH);*/
     digitalWrite(IN1, LOW);
@@ -35,41 +50,85 @@ void setup() {
     digitalWrite(IN3, LOW);
     digitalWrite(IN4, HIGH);
     Serial.println("Forward");
+    comparison();
 
 }
+
+
 
 void comparison(){
   // Cheching MOTORB is quicker than MOTORA
-    if((widthA > widthB) && (widthA < 255)){
+  widthA = pulseIn(tachA, HIGH);
+  widthB = pulseIn(tachB, HIGH);
+  MA1=widthA;
+  MB1=widthB;
+  delay(1);
+  widthA = pulseIn(tachA, HIGH);
+  widthB = pulseIn(tachB, HIGH);
+  MA2=widthA;
+  MB2=widthB;
+  delay(1);
+  widthA = pulseIn(tachA, HIGH);
+  widthB = pulseIn(tachB, HIGH);
+  MA3=widthA;
+  MB3=widthB;
+
+
+  widthA = pulseIn(tachA, HIGH);
+  widthB = pulseIn(tachB, HIGH);
+  MA4=widthA;
+  MB4=widthB;
+  delay(1);
+  widthA = pulseIn(tachA, HIGH);
+  widthB = pulseIn(tachB, HIGH);
+  MA5=widthA;
+  MB5=widthB;
+  delay(1);
+  widthA = pulseIn(tachA, HIGH);
+  widthB = pulseIn(tachB, HIGH);
+  MA6=widthA;
+  MB6=widthB;
+
+  AVwidthA = ((MA1 + MA2 + MA3 + MA4 + MA5 + MA6)/60);
+  AVwidthB = ((MB1 + MB2 + MB3 + MB4 + MB5 + MB6)/60);
+  
+  widthA = AVwidthA;
+  widthB = AVwidthB;
+
+    Serial.print("This is widthA: ");
+    Serial.println(widthA);
+    Serial.print("This is MOTORA: ");
+    Serial.println(MOTORA);
+    Serial.print("This is widthB: ");
+    Serial.println(widthB);
+    Serial.print("This is MOTORB: ");
+    Serial.println(MOTORB);
+
+    if((widthA > widthB) && (MOTORA < 250)){
       MOTORA == MOTORA++;
-    }
-    else if((widthA > widthB) && (widthA = 255 )){
+      }
+    else if((widthA > widthB) && (MOTORA >= 250 )){
       MOTORB == MOTORB--;
-    }      
-  
+      MOTORA--;
+      }      
   // Cheching MOTORA is quicker than MOTORB
-    else if((widthA < widthB) && (widthB < 255)){
+    else if((widthA < widthB) && (MOTORB < 250)){
       MOTORB == MOTORB++;
-    }
-    else if((widthA < widthB) && (widthB = 255 )){
+      }
+    else if((widthA < widthB) && (MOTORB >= 250 )){
       MOTORA == MOTORA--;
-    }
-  else{
-    
-   //do nothing
-  }
-  
+      MOTORB--;
+      }
+    else{
+      //do nothing
+      Serial.println("SYNCHED");
+      }
 }
+
+
 
 void loop() {
   // put your main code here, to run repeatedly:
-    widthA = pulseIn(tachA, HIGH);
-    Serial.print("This is widthA: ");
-    Serial.println(widthA);
-    widthB = pulseIn(tachB, HIGH);
-    Serial.print("This is widthB: ");
-    Serial.println(widthB);
     forward();
-    comparison();
-    
+
 }
