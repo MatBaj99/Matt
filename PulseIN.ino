@@ -89,9 +89,9 @@ void comparison(){
   MA6=widthA;
   MB6=widthB;
 
-  AVwidthA = ((MA1 + MA2 + MA3 + MA4 + MA5 + MA6)/60);
-  AVwidthB = ((MB1 + MB2 + MB3 + MB4 + MB5 + MB6)/60);
-  
+  AVwidthA = ((MA1 + MA2 + MA3 + MA4 + MA5 + MA6)/60); // Averages the values if the value of 60 is increased by a power of 10 it
+  AVwidthB = ((MB1 + MB2 + MB3 + MB4 + MB5 + MB6)/60); //reduces the accuracy
+ 
   widthA = AVwidthA;
   widthB = AVwidthB;
 
