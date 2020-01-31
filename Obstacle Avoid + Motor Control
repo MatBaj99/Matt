@@ -9,7 +9,7 @@
   int IN3 = 47; //Setting pin 47 for the MC pin 3
   int IN4 = 46; //Setting pin 46 for the MC pin 4
   int ENB = 11; //Setting pin 3 as a PWM for B changed to 11
-  int MOTORA = 150;
+  int MOTORA = 151;
   int MOTORB = 150;
 
 void setup() {
@@ -88,7 +88,6 @@ void stop() {
 void obstacleavoidance(){
 
   if((digitalRead(FR)==HIGH) && (digitalRead(FL)==HIGH)){
-
     Serial.println("FRONT DETECT");
     stop();
     delay(10);
@@ -96,23 +95,19 @@ void obstacleavoidance(){
     delay(10);
     right();
     delay(50);
-
   }
 
   else if((digitalRead(FR)==HIGH) && (digitalRead(FL)==LOW)){
-
     Serial.println("Front Right Active - STOP");
     stop();
     delay(10);
     back();
-    delay(10;
+    delay(10);
     left();
     delay(50);  
-
   }
 
   else if((digitalRead(FR)==LOW) && (digitalRead(FL)==HIGH)){
-
     Serial.println("Front Left Active - STOP");
     stop();
     delay(10);
@@ -120,10 +115,9 @@ void obstacleavoidance(){
     delay(10);
     right();
     delay(50);
-    }
+   }
 
    else if(((digitalRead(BR)==LOW) && (digitalRead(FL)==HIGH))||((digitalRead(BR)==LOW) && (digitalRead(FL)==HIGH))||((digitalRead(BR)==LOW) && (digitalRead(FL)==HIGH))){
-
     Serial.println("Back Active - STOP");
     stop();
     delay(10);
@@ -133,11 +127,9 @@ void obstacleavoidance(){
     }
 
   else{
-
     forward();
     /* comparison(); */
     delay(10);
-
 }
 
 }
