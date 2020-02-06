@@ -192,6 +192,8 @@ void obstacleavoidance(){
     Serial.println("Front Right Active - STOP");
     stop();
     delay(10);
+    back();
+    delay(10);
     left();
     delay(50);  
   }
