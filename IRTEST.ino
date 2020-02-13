@@ -173,8 +173,66 @@ void obstacleavoidance(){
 }
 }
 
+
+void obstacleseeking(){   // Reverse of ObstacleAvoid
+
+  if((digitalRead(FR)==HIGH) && (digitalRead(FL)==HIGH)){
+    Serial.println("FRONT DETECT");
+    stop();
+    delay(100);
+    back();
+    delay(100);
+   //Toucbar activates  
+   //SPIN Around 180 degrees
+  }
+
+  else if((digitalRead(FR)==HIGH) && (digitalRead(FL)==LOW)){
+    Serial.println("Front Right Active - STOP");
+    stop();
+    delay(100);
+    back();
+    delay(100);
+    right();
+    delay(500);
+    stop();
+    delay(100);
+    back(); 
+    // Toucbar activates  
+    //SPIN Around 180 degrees
+  }
+
+  else if((digitalRead(FR)==LOW) && (digitalRead(FL)==HIGH)){
+    Serial.println("Front Left Active - STOP");
+    stop();
+    delay(100);
+    back();
+    delay(100);
+    left();
+    delay(500);
+    stop();
+    delay(100);
+    back();
+    // Toucbar activates  
+    // SPIN Around 180 degrees
+   }
+
+  else{
+    forward();
+    /* comparison(); */
+    delay(100);
+}
+}
+
 void loop() {
   // put your main code here, to run repeatedly:
     obstacleavoidance();
+    obstacleseeking();
 
 }
+
+
+
+
+
+//Whitebox (Stay within whitebox)
+//Touchbars
