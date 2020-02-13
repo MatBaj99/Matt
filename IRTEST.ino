@@ -180,10 +180,10 @@ void obstacleseeking(){   // Reverse of ObstacleAvoid
     Serial.println("FRONT DETECT");
     stop();
     delay(100);
-    back();
-    delay(100);
-   //Toucbar activates  
-   //SPIN Around 180 degrees
+    foward();
+    //Toucbar activates
+    back();  
+    //SPIN Around 180 degrees
   }
 
   else if((digitalRead(FR)==HIGH) && (digitalRead(FL)==LOW)){
@@ -194,10 +194,9 @@ void obstacleseeking(){   // Reverse of ObstacleAvoid
     delay(100);
     right();
     delay(500);
-    stop();
-    delay(100);
-    back(); 
-    // Toucbar activates  
+    foward();
+    //Toucbar activates
+    back();  
     //SPIN Around 180 degrees
   }
 
@@ -209,11 +208,10 @@ void obstacleseeking(){   // Reverse of ObstacleAvoid
     delay(100);
     left();
     delay(500);
-    stop();
-    delay(100);
-    back();
-    // Toucbar activates  
-    // SPIN Around 180 degrees
+    foward();
+    //Toucbar activates
+    back();  
+    //SPIN Around 180 degrees
    }
 
   else{
