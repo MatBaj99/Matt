@@ -9,6 +9,7 @@
   int FL = 51; //setting pin 51 to the Front Left sensor
   int BL = 52; //setting pin 52 to the Back Left sensor
   int BR = 53; //setting pin 53 to the Back Right sensor
+  int IR_GND = 44 ; // setting pin 44 to GND for all sensors
 
   // initialise Bumper Sensors
 
@@ -96,6 +97,8 @@
   pinMode(BL, INPUT);
   pinMode(FR, INPUT);
   pinMode(FL, INPUT);
+  pinMode(IR_GND,OUTPUT);
+  digitalWrite(IR_GND, LOW);
 
   pinMode(v_read,INPUT);
 
@@ -116,6 +119,8 @@
   pinMode(IN4, OUTPUT);
   pinMode(ENA, OUTPUT);
   pinMode(ENB, OUTPUT);
+
+  
   pinMode(MotorGND, OUTPUT);
   digitalWrite(MotorGND, LOW);
   pinMode(tachA,INPUT);
